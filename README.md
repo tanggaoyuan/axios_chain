@@ -108,7 +108,7 @@ chain.post().disableInterceptor()
 // 拦截器
 
 const chain = new AxiosChain();
-chain.post<{ name: string, age: number }>.then((response) => {
+chain.post<{ name: string, age: number }>('xxxx').then((response) => {
   // response.data是{name:string,age:number}类型
 });
 
@@ -117,7 +117,7 @@ const chain = new AxiosChain().use<any>(() => {
     return promise.then((response) => response.data);
   };
 });
-chain.post<{ name: string, age: number }>.then((response) => {
+chain.post<{ name: string, age: number }>('xxxx').then((response) => {
   // 此时 response 是{name:string,age:number,[x:string]:any}类型
 });
 
@@ -126,7 +126,7 @@ const chain = new AxiosChain().use<never>(() => {
     return promise.then((response) => response.data);
   };
 });
-chain.post<{ name: string, age: number }>.then((response) => {
+chain.post<{ name: string, age: number }>('xxxx').then((response) => {
   // 此时 response 是{ name:string,age:number }类型
 });
 
@@ -138,7 +138,7 @@ const chain = new AxiosChain().use<{ time: number }>(() => {
     });
   };
 });
-chain.post<{ name: string, age: number }>.then((response) => {
+chain.post<{ name: string, age: number }>('xxxx').then((response) => {
   // 此时 response 是{ name:string,age:number,time:number }类型
 });
 ```
